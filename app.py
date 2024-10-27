@@ -2,12 +2,17 @@ import streamlit as st
 import requests
 from PIL import Image
 from io import BytesIO
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
 
 # Streamlit app title
 st.title("Fireworks Image Generation")
 
 # Input fields
-api_key = st.text_input("API Key", type="password")
+api_key = st.text_input("API Key", os.getenv("API_KEY"), type="password")
 prompt = st.text_input("Prompt", "generate a bangladeshi beautiful women pic")
 aspect_ratio = st.selectbox("Aspect Ratio", ["16:9", "4:3", "1:1"])
 guidance_scale = st.slider("Guidance Scale", 1.0, 10.0, 3.5)
